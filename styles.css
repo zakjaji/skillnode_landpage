@@ -1,0 +1,320 @@
+/* SkillNode Landing Page - Custom Styles */
+/* All Tailwind classes are applied via HTML. This file documents custom enhancements */
+
+/* ===== TYPOGRAPHY ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* ===== GRADIENT UTILITIES ===== */
+.gradient-text {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.gradient-btn {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gradient-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+}
+
+.gradient-btn:active {
+    transform: translateY(0);
+}
+
+.gradient-btn:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* ===== CARD ANIMATIONS ===== */
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover:focus-within {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* ===== STEP COUNTERS ===== */
+.step-number {
+    font-size: 48px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ===== ICON CIRCLES ===== */
+.icon-circle {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dbeafe;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    border-radius: 10px;
+    color: white;
+    flex-shrink: 0;
+}
+
+/* ===== FORM INPUTS ===== */
+input,
+select,
+textarea {
+    transition: all 0.2s ease;
+}
+
+input::placeholder,
+select {
+    color: #9ca3af;
+}
+
+.input-focus:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-focus:focus-visible {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #2563eb;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+    body {
+        font-weight: 500;
+    }
+    
+    h1, h2, h3 {
+        font-weight: 800;
+    }
+}
+
+/* ===== SECTION SPACING ===== */
+.section-spacing {
+    padding: 60px 20px;
+}
+
+@media (min-width: 768px) {
+    .section-spacing {
+        padding: 100px 40px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .section-spacing {
+        padding: 120px 60px;
+    }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-message {
+    animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE OPTIMIZATIONS ===== */
+/* Touch targets for mobile */
+@media (max-width: 768px) {
+    button,
+    a[role="button"],
+    input[type="submit"],
+    input[type="button"] {
+        min-height: 48px;
+        min-width: 48px;
+    }
+}
+
+/* ===== PERFORMANCE ===== */
+/* Reduce layout shift */
+button,
+a[role="button"],
+input {
+    box-sizing: border-box;
+}
+
+/* Image loading optimization */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* SVG optimization */
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+    body {
+        background: white;
+    }
+    
+    nav,
+    .section-spacing nav {
+        display: none;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+}
+
+/* ===== DARK MODE SUPPORT (Optional) ===== */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+    
+    input,
+    select {
+        background: #1e293b;
+        border-color: #334155;
+        color: #e2e8f0;
+    }
+    
+    input::placeholder {
+        color: #94a3b8;
+    }
+}
+
+/* ===== FOCUS VISIBLE STATES (Keyboard Navigation) ===== */
+:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px dashed #2563eb;
+    outline-offset: 3px;
+}
+
+/* ===== LINK UNDERLINES ===== */
+a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:visited {
+    color: inherit;
+}
+
+a:hover,
+a:focus-visible {
+    text-decoration: underline;
+}
+
+/* ===== UTILITY CLASSES ===== */
+.truncate-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
