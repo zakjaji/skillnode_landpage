@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sticky Navbar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --color-primary: #124C98;
+      --color-secondary: #059669;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-[200vh]">
+
+<!-- ================= NAVBAR ================= -->
+<header class="fixed left-0 right-0 top-6 z-50 flex justify-center">
+  <div
+    id="navbar"
+    class="transition-[width,transform,background-color,box-shadow]
+    duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+    w-full py-2 translate-y-3"
+  >
+    <div
+      id="navbarInner"
+      class="max-w-6xl mx-auto px-8 sm:px-6"
+    >
+      <div class="flex items-center justify-between">
+
+        <!-- Logo -->
+        <a href="/" class="inline-flex items-center gap-3">
+          <img src="./logo.svg" class="w-32 md:w-36 transition-all duration-500" />
+        </a>
+
+        <!-- Right -->
+        <div class="flex items-center gap-3">
+
+          <!-- Desktop Menu -->
+          <nav class="hidden md:flex items-center gap-6">
+
+            <a href="/find-job" class="text-sm font-medium text-slate-800 hover:text-[var(--color-primary)] transition">
+              Find Work
+            </a>
+            <a href="/find-talent" class="text-sm font-medium text-slate-800 hover:text-[var(--color-primary)] transition">
+              Find Talent
+            </a>
+            <a href="/how-it-works" class="text-sm font-medium text-slate-800 hover:text-[var(--color-primary)] transition">
+              How It Works
+            </a>
+            <a href="/pricing" class="text-sm font-medium text-slate-800 hover:text-[var(--color-primary)] transition">
+              Pricing
+            </a>
+
+            <!-- Account -->
+            <div class="relative">
+              <button
+                onclick="toggleDropdown()"
+                class="flex items-center gap-2 px-3 py-1 rounded-full
+                border border-gray-300 bg-white hover:bg-gray-50 transition"
+              >
+                <img src="./f1.png" class="w-7 h-7 rounded-full border" />
+                <span class="text-sm font-medium text-gray-800">My Account</span>
+              </button>
+
+              <!-- Dropdown -->
+              <div
+                id="dropdown"
+                class="hidden absolute right-0 mt-2 w-56 bg-white border border-gray-200
+                shadow-lg rounded-md overflow-hidden z-50"
+              >
+                <a href="/account/freelancer" class="flex gap-2 px-4 py-2 text-sm hover:bg-gray-50">
+                  Freelancer Account
+                </a>
+                <a href="/account/company" class="flex gap-2 px-4 py-2 text-sm hover:bg-gray-50">
+                  Company Account
+                </a>
+                <a href="/account/company/settings" class="flex gap-2 px-4 py-2 text-sm hover:bg-gray-50">
+                  Settings
+                </a>
+                <button
+                  class="flex w-full items-center gap-2 px-4 py-2 text-sm text-red-600 hover:bg-gray-50">
+                  Logout
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <!-- Mobile Toggle -->
+          <button
+            onclick="toggleDrawer()"
+            class="md:hidden p-2 rounded-md hover:bg-slate-100 transition"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MOBILE BACKDROP ================= -->
+<div
+  id="backdrop"
+  onclick="toggleDrawer()"
+  class="hidden fixed inset-0 bg-black/60 backdrop-blur-md z-40">
+</div>
+
+<!-- ================= MOBILE DRAWER ================= -->
+<div
+  id="drawer"
+  class="fixed top-0 left-0 bottom-0 z-50 w-[85%] max-w-sm bg-white
+  shadow-xl rounded-tr-2xl rounded-br-2xl overflow-hidden
+  -translate-x-full transition-transform duration-300"
+>
+  <div class="h-full flex flex-col p-8 space-y-8">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+      <img src="./logo.svg" class="w-32" />
+      <button
+        onclick="toggleDrawer()"
+        class="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
+        ✕
+      </button>
+    </div>
+
+    <!-- Menu -->
+    <nav class="flex flex-col gap-5 text-base font-medium text-gray-800">
+      <a href="/find-job" class="hover:text-[var(--color-primary)] transition">Find Work</a>
+      <a href="/find-talent" class="hover:text-[var(--color-primary)] transition">Find Talent</a>
+      <a href="/how-it-works" class="hover:text-[var(--color-primary)] transition">How It Works</a>
+      <a href="/pricing" class="hover:text-[var(--color-primary)] transition">Pricing</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="mt-auto space-y-3">
+      <button
+        class="w-full py-2.5 bg-[var(--color-primary)] text-white
+        font-semibold rounded-xl shadow-md hover:opacity-90 transition">
+        Log In
+      </button>
+      <button
+        class="w-full py-2.5 border border-[var(--color-primary)]
+        text-[var(--color-primary)] font-semibold rounded-xl
+        hover:bg-[var(--color-primary)]/10 transition">
+        Sign Up
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= JS ================= -->
+<script>
+  const navbar = document.getElementById("navbar");
+  const inner = document.getElementById("navbarInner");
+  const dropdown = document.getElementById("dropdown");
+  const drawer = document.getElementById("drawer");
+  const backdrop = document.getElementById("backdrop");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add(
+        "w-[min(1150px,94%)]",
+        "bg-white/70",
+        "backdrop-blur-md",
+        "border",
+        "border-white/20",
+        "shadow-sm",
+        "rounded-2xl",
+        "translate-y-0"
+      );
+      navbar.classList.remove("w-full", "translate-y-3");
+      inner.classList.replace("px-8", "px-4");
+    } else {
+      navbar.className =
+        "transition-[width,transform,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] w-full py-2 translate-y-3";
+      inner.className = "max-w-6xl mx-auto px-8 sm:px-6";
+    }
+  });
+
+  function toggleDropdown() {
+    dropdown.classList.toggle("hidden");
+  }
+
+  function toggleDrawer() {
+    drawer.classList.toggle("-translate-x-full");
+    backdrop.classList.toggle("hidden");
+  }
+</script>
+
+</body>
+</html>

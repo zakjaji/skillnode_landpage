@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Footer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --color-primary: #124C98;
+      --color-secondary: #059669;
+    }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+<footer class="relative">
+  <div class="mx-auto w-full max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-7xl pt-20">
+
+      <!-- Outer glass card -->
+      <div
+        class="relative overflow-hidden rounded-[2.25rem]
+        border border-slate-200/40 bg-white/80 backdrop-blur-xl
+        shadow-[0_30px_80px_-30px_rgba(0,0,0,0.25)]
+        h-auto md:h-[500px] pb-28 md:pb-0"
+      >
+
+        <!-- Top fade -->
+        <div
+          class="pointer-events-none absolute inset-x-0 top-0 z-[5] h-40
+          bg-gradient-to-b from-white/70 via-white/40 to-transparent">
+        </div>
+
+        <!-- Inner white card -->
+        <div
+          class="relative z-10 m-2 rounded-3xl border border-slate-200/60
+          bg-white/90 backdrop-blur p-8
+          shadow-[0_28px_60px_-25px_rgba(0,0,0,0.35)]"
+        >
+
+          <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
+
+            <!-- Brand -->
+            <div class="md:col-span-5 lg:col-span-6">
+              <div class="flex items-center gap-3">
+                <img src="./logo.svg" alt="Skillnode Logo" class="w-32 md:w-36">
+              </div>
+
+              <p class="mt-4 max-w-md text-sm leading-6 text-slate-500">
+                Skillnode — Contrary to popular belief, Lorem Ipsum is not simply.
+                It has roots in a piece of classical Latin literature from 45 BC,
+                making it over 2000 years old.
+              </p>
+
+              <!-- Socials -->
+              <div class="mt-5 flex items-center gap-4 text-slate-500">
+                <!-- X -->
+                <a href="#"
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg
+                  border border-slate-200 bg-white shadow-sm transition
+                  hover:border-[var(--color-primary)]
+                  hover:bg-[var(--color-primary)]/10
+                  hover:text-[var(--color-primary)]">
+                  <!-- X icon -->
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                    <path d="M18.244 3H21l-7.5 8.57L22.5 21h-6.744l-5.28-6.3L4.5 21H2l8.28-9.45L2.25 3h6.744l4.92 5.88Z"/>
+                  </svg>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="#"
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg
+                  border border-slate-200 bg-white shadow-sm transition
+                  hover:border-[var(--color-primary)]
+                  hover:bg-[var(--color-primary)]/10
+                  hover:text-[var(--color-primary)]">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                    <path d="M4.983 3.5A2.5 2.5 0 1 0 5 8.5ZM3 9h4v12H3Zm7 0h3.8v1.7h.1A4.2 4.2 0 0 1 21 14.5V21h-4v-5.2c0-1.2-.02-2.8-1.7-2.8Z"/>
+                  </svg>
+                </a>
+
+                <!-- GitHub -->
+                <a href="#"
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg
+                  border border-slate-200 bg-white shadow-sm transition
+                  hover:border-[var(--color-primary)]
+                  hover:bg-[var(--color-primary)]/10
+                  hover:text-[var(--color-primary)]">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5 fill-current">
+                    <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.42-4.04-1.42-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.84 1.32 3.53 1.01.11-.78.42-1.32.77-1.62-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.25-3.22-.13-.31-.54-1.56.12-3.26Z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Columns -->
+            <div class="md:col-span-7 lg:col-span-6 grid grid-cols-2 gap-8 sm:grid-cols-3">
+
+              <div>
+                <h3 class="text-sm font-semibold relative pb-1 mb-2">
+                  For Candidates
+                  <span class="absolute left-0 bottom-0 h-0.5 w-6 bg-[var(--color-primary)]"></span>
+                </h3>
+                <ul class="mt-4 space-y-3 text-sm text-slate-500">
+                  <li><a href="/find-job" class="hover:underline">Browse Jobs</a></li>
+                  <li><a href="/find-talent" class="hover:underline">Browse Profile</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold relative pb-1 mb-2">
+                  Resources
+                  <span class="absolute left-0 bottom-0 h-0.5 w-6 bg-[var(--color-primary)]"></span>
+                </h3>
+                <ul class="mt-4 space-y-3 text-sm text-slate-500">
+                  <li><a href="#" class="hover:underline">Blog</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 class="text-sm font-semibold relative pb-1 mb-2">
+                  Company
+                  <span class="absolute left-0 bottom-0 h-0.5 w-6 bg-[var(--color-primary)]"></span>
+                </h3>
+                <ul class="mt-4 space-y-3 text-sm text-slate-500">
+                  <li><a href="/about" class="hover:underline">About</a></li>
+                  <li><a href="/how-it-works" class="hover:underline">How It Works</a></li>
+                  <li><a href="/careers" class="hover:underline">Careers</a></li>
+                  <li><a href="/contact" class="hover:underline">Contact</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div
+            class="my-8 h-px w-full"
+            style="background: linear-gradient(90deg, transparent, #124C9822, transparent);">
+          </div>
+
+          <!-- Bottom row -->
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm text-slate-500">
+            <p>© 2025 SKILLNODE. All rights reserved.</p>
+            <nav class="flex flex-wrap gap-6">
+              <a href="#" class="hover:underline">Privacy Policy</a>
+              <a href="#" class="hover:underline">Terms of Service</a>
+              <a href="#" class="hover:underline">Cookies Settings</a>
+              <a href="/faq" class="hover:underline">FAQ</a>
+            </nav>
+          </div>
+
+        </div>
+
+        <!-- Watermark -->
+        <div class="pointer-events-none absolute inset-x-0 bottom-[-1.25rem] md:bottom-[-3.5rem] flex justify-center">
+          <span
+            class="font-extrabold tracking-tighter text-transparent bg-clip-text"
+            style="
+              background-image: linear-gradient(90deg,
+                #124C981A,
+                #0596691A,
+                #124C981A);
+              font-size: clamp(1rem, 18vw, 14rem);
+              line-height: 1.03;
+            ">
+            SKILLNODE
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
