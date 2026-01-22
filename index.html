@@ -1040,7 +1040,12 @@
 
                 if (error) {
                     console.error('Supabase error:', error);
-                    alert('There was an error submitting your form. Please try again.');
+                    // Check for duplicate entry (unique constraint violation)
+                    if (error.code === '23505') {
+                        alert('You have already submitted this form!');
+                    } else {
+                        alert('There was an error submitting your form. Please try again.');
+                    }
                     return;
                 }
 
