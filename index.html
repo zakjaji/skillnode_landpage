@@ -379,10 +379,155 @@
         #mobile-menu-overlay.show {
             display: block !important;
         }
+
+        /* Toast Notification Styles */
+        #toast-container {
+            position: fixed !important;
+            top: 24px !important;
+            right: 24px !important;
+            z-index: 2147483647 !important;
+            /* Maximum z-index */
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px;
+            max-width: 400px;
+            pointer-events: none !important;
+            overflow: visible !important;
+        }
+
+        #toast-container .toast {
+            pointer-events: auto !important;
+            position: relative !important;
+            overflow: visible !important;
+        }
+
+        .toast {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            display: flex !important;
+            align-items: center;
+            gap: 12px;
+            min-width: 320px;
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .toast.toast-success {
+            border-left: 4px solid #22c55e;
+        }
+
+        .toast.toast-error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast.toast-info {
+            border-left: 4px solid #3b82f6;
+        }
+
+        .toast-icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+
+        .toast-success .toast-icon {
+            background: #dcfce7;
+            color: #22c55e;
+        }
+
+        .toast-error .toast-icon {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        .toast-info .toast-icon {
+            background: #dbeafe;
+            color: #3b82f6;
+        }
+
+        .toast-message {
+            flex: 1;
+            color: #1f2937;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .toast-close {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .toast-close:hover {
+            background: #f3f4f6;
+            color: #1f2937;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .toast.toast-exit {
+            animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(120%);
+            }
+        }
+
+        @media (max-width: 640px) {
+            #toast-container {
+                top: 16px;
+                right: 16px;
+                left: 16px;
+                max-width: 100%;
+            }
+
+            .toast {
+                min-width: auto;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-white text-gray-900">
+    <!-- Toast Notification Container - Must be first for maximum z-index effectiveness -->
+    <div id="toast-container"></div>
+
     <!-- Navigation Bar -->
     <header aria-label="Primary" class="fixed left-0 right-0 top-6 z-50 flex justify-center" id="navbar-header">
         <div class="transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] w-full py-2 translate-y-3"
@@ -400,7 +545,7 @@
                             <a class="inline-flex items-center gap-2 text-sm font-medium text-gray-800 hover:text-blue-600 transition"
                                 href="#why-skillnode">Why Us</a>
                             <a class="inline-flex items-center gap-2 text-sm font-medium text-gray-800 hover:text-blue-600 transition"
-                                href="#follow-us">Follow Us</a>
+                                href="#contact-us">Contact Us</a>
                         </nav>
                         <button aria-label="Toggle menu" class="md:hidden p-2 rounded-md hover:bg-gray-100 transition"
                             id="mobile-menu-btn">
@@ -434,7 +579,8 @@
                             It Works</a>
                         <a href="#why-skillnode" class="block text-lg font-medium text-gray-900 hover:text-blue-600">Why
                             Us</a>
-                        <a href="#follow-us" class="block text-lg font-medium text-gray-900 hover:text-blue-600">Follow
+                        <a href="#contact-us"
+                            class="block text-lg font-medium text-gray-900 hover:text-blue-600">Contact
                             Us</a>
                     </nav>
                 </div>
@@ -774,40 +920,121 @@
         </div>
     </section>
 
-    <!-- 6. SHARE YOUR PROBLEM SECTION -->
-    <section id="follow-us" class="section-spacing bg-white">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Share Your Problem</h2>
-                <p class="text-xl text-gray-600">Help us understand what you need. Your feedback shapes SkillNode.</p>
+    <!-- 7. CONTACT US SECTION -->
+    <section id="contact-us" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Contact Us</h2>
+                <p class="text-xl text-gray-600">We’d love to hear from you. Reach out or share your thoughts.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Feedback Option 2 -->
-                <div
-                    class="p-8 border-2 border-gray-200 rounded-2xl hover:border-blue-500 hover:bg-blue-50 transition cursor-pointer">
-                    <div class="text-4xl mb-4">📧</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Email Us Your Ideas</h3>
-                    <p class="text-gray-600 mb-4">Share problems, suggestions, or become part of our founding team.</p>
-                    <a href="mailto:skillnodeapp@gmail.com"
-                        class="text-blue-600 font-semibold hover:text-blue-700">skillnodeapp@gmail.com →</a>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                <!-- Left: Contact Information -->
+                <div class="space-y-6">
+                    <!-- Email Card -->
+                    <div
+                        class="p-6 bg-white border-2 border-gray-100 rounded-2xl md:hover:-translate-y-1 transition duration-300 shadow-sm flex items-center gap-5">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600">
+                            <!-- Mail Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Email</p>
+                            <a href="mailto:hello@skillnode.in"
+                                class="text-lg font-bold text-gray-900 hover:text-blue-600 transition">hello@skillnode.in</a>
+                        </div>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div
+                        class="p-6 bg-white border-2 border-gray-100 rounded-2xl md:hover:-translate-y-1 transition duration-300 shadow-sm flex items-center gap-5">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600">
+                            <!-- Map Pin Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide">Location</p>
+                            <p class="text-lg font-bold text-gray-900">Bangalore, India</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Card -->
+                    <div
+                        class="p-6 bg-white border-2 border-gray-100 rounded-2xl md:hover:-translate-y-1 transition duration-300 shadow-sm flex items-center gap-5">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0 text-blue-600">
+                            <!-- Share/Network Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M14.828 14.828a4 4 0 015.656 0l4 4a4 4 0 01-5.656 5.656l-1.102 1.101" />
+                                <!-- Just generic link icon concept -->
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">Follow Us</p>
+                            <div class="flex gap-4">
+                                <a href="https://www.linkedin.com/company/skillnodesolution/" target="_blank"
+                                    class="flex items-center gap-2 text-gray-900 hover:text-blue-700 font-bold transition">
+                                    LinkedIn
+                                </a>
+                                <a href="https://www.instagram.com/skillnodeindia" target="_blank"
+                                    class="flex items-center gap-2 text-gray-900 hover:text-pink-600 font-bold transition">
+                                    Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Feedback Option 3 -->
+                <!-- Right: Contact Form -->
                 <div
-                    class="p-8 border-2 border-gray-200 rounded-2xl hover:border-blue-500 hover:bg-blue-50 transition cursor-pointer">
-                    <div class="text-4xl mb-4">📱</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Follow On Social</h3>
-                    <p class="text-gray-600 mb-4">Get updates, behind-the-scenes, and launch announcements.</p>
-                    <div class="flex gap-3">
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Twitter</a>
-                        <a href="https://www.linkedin.com/company/skillnodesolution/" target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-blue-600 font-semibold hover:text-blue-700">LinkedIn</a>
-                        <a href="https://www.instagram.com/skillnodeindia?igsh=MWRkdTdzeTFzNDd5ZQ==" target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-blue-600 font-semibold hover:text-blue-700">Instagram</a>
-                    </div>
+                    class="bg-white p-8 md:p-10 rounded-[28px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100">
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-5">
+                        <div>
+                            <label for="c-name" class="block text-sm font-semibold text-gray-700 mb-2">Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" id="c-name" required placeholder="John Doe"
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition-all placeholder-gray-400 font-medium text-gray-900">
+                        </div>
+
+                        <div>
+                            <label for="c-email" class="block text-sm font-semibold text-gray-700 mb-2">Email <span
+                                    class="text-red-500">*</span></label>
+                            <input type="email" id="c-email" required placeholder="john@example.com"
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition-all placeholder-gray-400 font-medium text-gray-900">
+                        </div>
+
+                        <div>
+                            <label for="c-message" class="block text-sm font-semibold text-gray-700 mb-2">Comments <span
+                                    class="text-red-500">*</span></label>
+                            <textarea id="c-message" required rows="4" placeholder="Your comments..."
+                                class="w-full px-4 py-3 rounded-xl bg-gray-50 border-2 border-gray-200 focus:border-blue-500 focus:bg-white focus:outline-none transition-all placeholder-gray-400 font-medium text-gray-900 resize-none"></textarea>
+                        </div>
+
+                        <div id="contact-status" class="hidden font-medium text-sm text-center"></div>
+
+                        <button type="submit"
+                            class="w-full py-3 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 text-white font-bold hover:shadow-lg hover:translate-y-[-2px] active:translate-y-0 transition-all duration-300">
+                            Send Message
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -821,10 +1048,11 @@
                 <!-- Left: Brand Section -->
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center mb-4">
-                        <img src="/logo.svg" alt="SkillNode Logo" class="h-10 brightness-0 invert" />
+                        <img src="logo.svg" alt="SkillNode Logo" class="h-10 brightness-0 invert" />
                     </div>
                     <p class="text-gray-300 text-sm leading-relaxed md:leading-[1.9] max-w-sm">
-                        India's first hyperlocal marketplace connecting local talent with nearby opportunities. Built
+                        India's first hyperlocal marketplace connecting local talent with nearby opportunities.
+                        Built
                         for Indian cities, designed for trust.
                     </p>
 
@@ -909,10 +1137,12 @@
                 <div class="flex flex-col md:flex-row items-center justify-between gap-4">
                     <p class="text-gray-400 text-sm">© 2026 SKILLNODE. All rights reserved.</p>
                     <nav class="flex flex-wrap items-center justify-center gap-6">
-                        <a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy
+                            Policy</a>
                         <a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Terms of
                             Service</a>
-                        <a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Cookie Settings</a>
+                        <a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Cookie
+                            Settings</a>
                         <a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">FAQ</a>
                     </nav>
                 </div>
@@ -944,8 +1174,8 @@
 
     <script>
         // Supabase client setup
-        const SUPABASE_URL = 'https://oogmijsomytenxfqcknq.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_9qlw3tvLiTDLQNsKhhY9CA_eLjJMbnq';
+        const SUPABASE_URL = 'https://wmrhvtjbcuezdysjlsaq.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indtcmh2dGpiY3VlemR5c2psc2FxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAwOTkzMjksImV4cCI6MjA4NTY3NTMyOX0.-CcBYE78qFc6kEczeWDQArg615tc4hAh5NTodjHTgi8';
 
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -980,6 +1210,121 @@
         });
 
         // ================================
+        // TOAST NOTIFICATION HELPERS
+        // ================================
+
+        /**
+         * Display a toast notification
+         * @param {string} message - The message to display
+         * @param {string} type - The type of toast: 'success', 'error', or 'info'
+         */
+        function showToast(message, type = 'info') {
+            console.log('=== SHOWTOAST CALLED ===');
+            console.log('Message:', message);
+            console.log('Type:', type);
+
+            const container = document.getElementById('toast-container');
+            console.log('Toast container found:', !!container);
+            console.log('Toast container element:', container);
+
+            if (!container) {
+                console.error('ERROR: Toast container not found in DOM!');
+                return;
+            }
+
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+
+            // Icon based on type
+            let icon = '';
+            if (type === 'success') icon = '✓';
+            else if (type === 'error') icon = '✕';
+            else icon = 'ℹ';
+
+            toast.innerHTML = `
+                <div class="toast-icon">${icon}</div>
+                <div class="toast-message">${message}</div>
+                <button class="toast-close" onclick="this.parentElement.remove()">✕</button>
+            `;
+
+            console.log('Toast element created:', toast);
+            console.log('Toast HTML:', toast.outerHTML);
+
+            container.appendChild(toast);
+            console.log('Toast appended to container. Container children count:', container.children.length);
+            console.log('Toast styles:', {
+                position: window.getComputedStyle(toast).position,
+                display: window.getComputedStyle(toast).display,
+                opacity: window.getComputedStyle(toast).opacity,
+                visibility: window.getComputedStyle(toast).visibility,
+                zIndex: window.getComputedStyle(toast).zIndex
+            });
+            console.log('========================');
+
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                toast.classList.add('toast-exit');
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+        }
+
+        /**
+         * Extract user-friendly error message from Supabase error
+         * @param {object} error - The Supabase error object
+         * @returns {string} - User-friendly error message
+         */
+        function extractSupabaseError(error) {
+            console.log('Supabase error details:', error);
+
+            // Priority 1: Check for database trigger error code (P0001)
+            // Database triggers raise P0001 errors with custom messages
+            if (error.code === 'P0001' && error.message) {
+                return error.message;
+            }
+
+            // Priority 2: Check if error message contains common duplicate phrases
+            if (error.message) {
+                const messageLower = error.message.toLowerCase();
+
+                // Check for various duplicate message patterns (case-insensitive)
+                if (messageLower.includes('already signed up') ||
+                    messageLower.includes('already submitted') ||
+                    messageLower.includes('already registered') ||
+                    messageLower.includes('already signup') ||
+                    messageLower.includes('already exists')) {
+                    return error.message; // Return original message with proper capitalization
+                }
+            }
+
+            // Priority 3: Check for unique constraint violation (23505)
+            if (error.code === '23505') {
+                return 'You have already signed up with this email';
+            }
+
+            // Priority 4: Check error details or hint for duplicate info
+            if (error.details) {
+                const detailsLower = error.details.toLowerCase();
+                if (detailsLower.includes('already') ||
+                    detailsLower.includes('duplicate') ||
+                    detailsLower.includes('unique constraint')) {
+                    return error.details;
+                }
+            }
+
+            if (error.hint) {
+                const hintLower = error.hint.toLowerCase();
+                if (hintLower.includes('already') ||
+                    hintLower.includes('duplicate')) {
+                    return error.hint;
+                }
+            }
+
+            // Default fallback for other errors
+            return 'There was an error submitting your form. Please try again.';
+        }
+
+        // ================================
         // DROPDOWN HANDLER
         // ================================
 
@@ -1001,11 +1346,11 @@
 
             // Validate required dropdown fields
             if (!userType) {
-                alert('Please select your user type');
+                showToast('Please select your user type', 'error');
                 return;
             }
             if (!experience) {
-                alert('Please select your experience level');
+                showToast('Please select your experience level', 'error');
                 return;
             }
 
@@ -1036,16 +1381,27 @@
                         }
                     ]);
 
-                console.log('Supabase response:', { data, error });
+                // Detailed logging for debugging
+                console.log('=== SUPABASE RESPONSE ===');
+                console.log('Data:', data);
+                console.log('Error:', error);
+                if (error) {
+                    console.log('Error Code:', error.code);
+                    console.log('Error Message:', error.message);
+                    console.log('Error Details:', error.details);
+                    console.log('Error Hint:', error.hint);
+                    console.log('Full Error Object:', JSON.stringify(error, null, 2));
+                }
+                console.log('========================');
 
                 if (error) {
-                    console.error('Supabase error:', error);
-                    // Check for duplicate entry (unique constraint violation)
-                    if (error.code === '23505') {
-                        alert('You have already submitted this form!');
-                    } else {
-                        alert('There was an error submitting your form. Please try again.');
-                    }
+                    console.error('Supabase error detected!');
+
+                    // Direct display of error message
+                    let errorMessage = error.message || 'There was an error submitting your form. Please try again.';
+
+                    console.log('Displaying error message:', errorMessage);
+                    showToast(errorMessage, 'error');
                     return;
                 }
 
@@ -1053,6 +1409,9 @@
                 const form = event.target;
                 const submitBtn = form.querySelector('.onboarding-submit');
                 const originalText = submitBtn.textContent;
+
+                showToast("Thanks! You're on the early bird list 🎉", 'success');
+
                 submitBtn.textContent = 'Submitted! 🎉';
                 submitBtn.disabled = true;
                 submitBtn.style.cursor = 'not-allowed';
@@ -1069,7 +1428,7 @@
 
             } catch (error) {
                 console.error('Unexpected error:', error);
-                alert('There was an error submitting your form. Please try again.');
+                showToast('There was an error submitting your form. Please try again.', 'error');
             }
         }
 
@@ -1080,28 +1439,112 @@
             const email = emailInput.value.trim();
 
             try {
-                const { error } = await supabaseClient
+                const { data, error } = await supabaseClient
                     .from('notifications')
                     .insert([{ email }]);
 
+                // Detailed logging
+                console.log('=== NOTIFICATION SUPABASE RESPONSE ===');
+                console.log('Data:', data);
+                console.log('Error:', error);
                 if (error) {
-                    // duplicate email (already notified)
-                    if (error.code === '23505') {
-                        alert("You're already on our notification list 🚀");
-                    } else {
-                        console.error(error);
-                        alert("Something went wrong. Please try again.");
-                    }
+                    console.log('Error Code:', error.code);
+                    console.log('Error Message:', error.message);
+                    console.log('Full Error:', JSON.stringify(error, null, 2));
+                }
+                console.log('======================================');
+
+                if (error) {
+                    console.error('Notification error detected!');
+                    let errorMessage = error.message || 'Something went wrong. Please try again.';
+                    console.log('Displaying error:', errorMessage);
+                    showToast(errorMessage, 'error');
                     return;
                 }
 
-                alert("Thanks! We'll notify you when we launch 🚀");
+                showToast("Thanks! We'll notify you when we launch 🚀", 'success');
                 emailInput.value = '';
                 document.getElementById('notify-modal').close();
 
             } catch (err) {
-                console.error(err);
-                alert("Unexpected error. Please try again.");
+                console.error('Unexpected error:', err);
+                showToast('Unexpected error. Please try again.', 'error');
+            }
+        }
+
+
+        // ================================
+        // CONTACT FORM HANDLER
+        // ================================
+
+        async function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const statusDiv = document.getElementById('contact-status');
+
+            const name = document.getElementById('c-name').value.trim();
+            const email = document.getElementById('c-email').value.trim();
+            const message = document.getElementById('c-message').value.trim();
+
+            if (!name || !email || !message) return;
+
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = 'Sending...';
+
+            try {
+                const { data, error } = await supabaseClient
+                    .from('contact_messages')
+                    .insert([{ name, email, message }]);
+
+                // Detailed logging
+                console.log('=== CONTACT SUPABASE RESPONSE ===');
+                console.log('Data:', data);
+                console.log('Error:', error);
+                if (error) {
+                    console.log('Error Code:', error.code);
+                    console.log('Error Message:', error.message);
+                    console.log('Full Error:', JSON.stringify(error, null, 2));
+                }
+                console.log('==================================');
+
+                if (error) {
+                    console.error('Contact form error detected!');
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+
+                    let errorMessage = error.message || 'Something went wrong. Please try again.';
+                    console.log('Displaying error:', errorMessage);
+                    showToast(errorMessage, 'error');
+                    return;
+                }
+
+                // Success
+                btn.innerHTML = 'Message Sent! 🎉';
+                btn.style.background = '#22c55e'; // Green success color
+
+                showToast('Thanks! We will get back to you soon.', 'success');
+
+                statusDiv.textContent = 'Thanks! We will get back to you soon.';
+                statusDiv.className = 'block text-green-600 text-center font-medium mt-3 bg-green-50 p-2 rounded-lg';
+                statusDiv.classList.remove('hidden');
+
+                form.reset();
+
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                    btn.style.background = ''; // Reset to gradient from CSS
+
+                    statusDiv.classList.add('hidden');
+                }, 5000);
+
+            } catch (error) {
+                console.error('Unexpected contact error:', error);
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                showToast('Something went wrong. Please try again.', 'error');
             }
         }
 
